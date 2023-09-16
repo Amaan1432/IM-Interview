@@ -13,13 +13,9 @@ const userSchema= new mogoose.Schema({
     password :{
         type:String,
         required : true,
-    },
-    interview :{
-        type:String,
-        required : true,
     }
-
-},{
+},
+{
     timestamps:true
 })
 
