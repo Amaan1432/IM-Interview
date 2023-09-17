@@ -12,6 +12,9 @@ module.exports.user_signIn= (req,res)=>{
  
     return res.render('user_signIn');
 }
+module.exports.profile =(req,res)=>{
+    return res.render('profile');
+}
 
 module.exports.create= async (req,res)=>{
    let {username,email,password,comfirm_password} = req.body;

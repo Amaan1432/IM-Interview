@@ -1,15 +1,18 @@
 const express = require('express');
 const port = 8080;
 const path = require('path');
-const routes = require('./routes')
-const cookieParser=require('cookie-parser')
+
+const passport = require('./config/passport-local-strategy');
+const cookieParser=require('cookie-parser');
 const mongodb = require('./config/mongo');
-const session =require('express-session');
-const expessLayouts = require('express-ejs-layouts');
+const session = require('express-session');
+const expressLayouts = require('express-ejs-layouts');
 const flash = require('connect-flash');
 const customMware = require('./config/middleware');
+const expressEjsLayouts = require('express-ejs-layouts');
 
 const app = express();
+
 
 app.use(express.urlencoded());
 app.use(express.json());
@@ -50,7 +53,7 @@ app.use(passport.setAuthenticatedUser);
 //middle for authenticate
 
 
-app.use('/', routes);
+app.use('/', require('./routes'));
 
 
 mongodb.dbConnection.then(() => app.listen(port, () => {
