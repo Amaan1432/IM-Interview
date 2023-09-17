@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Company= require('./interviewSchema');
+
 const studentSchema = new mongoose.Schema({
     batch: {
         type: String,

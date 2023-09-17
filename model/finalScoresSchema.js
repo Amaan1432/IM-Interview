@@ -12,10 +12,14 @@ const finalScoresSchema= new mogoose.Schema({
     react :{
         type:Number,
         required : true,
+    },
+    students:{
+        type: mongoose.Types.ObjectId,
+        ref: 'Students'
     }
 },
 {
     timestamps:true
 })
 
-model.export.User = mongoose.model('User',finalScoresSchema);
+model.export.Scores = mongoose.model('Scores',finalScoresSchema);

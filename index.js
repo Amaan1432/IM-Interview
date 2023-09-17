@@ -6,7 +6,8 @@ const cookieParser=require('cookie-parser')
 const mongodb = require('./config/mongo');
 const session =require('express-session');
 const expessLayouts = require('express-ejs-layouts');
-
+const flash = require('connect-flash');
+const customMware = require('./config/middleware');
 
 const app = express();
 
@@ -17,9 +18,13 @@ app.use(cookieParser());
 app.use(express.static('./assets'));
 
 app.use(expressLayouts);
+
 // extract style and scripts from sub pages into the layout
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
+
+app.use(flash());
+app.use(customMware.setFlash);
 
 // set up the view engine
 app.set('view engine', 'ejs');
@@ -39,6 +44,8 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(passport.setAuthenticatedUser);
 
 //middle for authenticate
 
