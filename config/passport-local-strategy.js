@@ -60,7 +60,7 @@ passport.use(new LocalStrategy({
         }
     
         // if the user is not signed in
-        return res.redirect('/users/sign-in');
+        return res.redirect('/user/signin');
     }
     
     passport.setAuthenticatedUser = function (req, res, next){

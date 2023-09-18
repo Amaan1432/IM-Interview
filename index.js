@@ -26,8 +26,7 @@ app.use(expressLayouts);
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
 
-app.use(flash());
-app.use(customMware.setFlash);
+
 
 // set up the view engine
 app.set('view engine', 'ejs');
@@ -37,13 +36,15 @@ app.set('views', './views');
 app.use(session({
     name: 'IE-Interview',
     // TODO change the secret before deployment in production mode
-    secret: '&hsjsgg$',
+    secret: '&hsjsgg$0uty',
     saveUninitialized: false,
     resave: false,
     cookie: {
         maxAge: (1000 * 60 * 100)
     }
 }));
+
+
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -52,6 +53,9 @@ app.use(passport.setAuthenticatedUser);
 
 //middle for authenticate
 
+app.use(flash());
+
+app.use(customMware.setFlash);
 
 app.use('/', require('./routes'));
 

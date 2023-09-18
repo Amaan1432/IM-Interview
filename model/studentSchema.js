@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-
+const Company = require ('./interviewSchema');
+const Scores = require('./finalScoresSchema');
 const studentSchema = new mongoose.Schema({
     batch: {
         type: String,
@@ -22,9 +23,13 @@ const studentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    scores:{
+        type: mongoose.Types.ObjectId,
+        ref: 'Scores'
+    },
     companies: [{
         type: mongoose.Types.ObjectId,
-        ref: 'company'
+        ref: 'Company'
     }]
 
 }, {

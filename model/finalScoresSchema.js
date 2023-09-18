@@ -1,6 +1,6 @@
-const mogoose= require('mogoose')
+const mongoose= require('mongoose')
 
-const finalScoresSchema= new mogoose.Schema({
+const finalScoresSchema= new mongoose.Schema({
     dsa:{
         type:Number,
         required : true,
@@ -22,4 +22,4 @@ const finalScoresSchema= new mogoose.Schema({
     timestamps:true
 })
 
-model.export.Scores = mongoose.model('Scores',finalScoresSchema);
+module.exports.Scores = mongoose.model('Scores',finalScoresSchema);
