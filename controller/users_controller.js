@@ -1,4 +1,4 @@
-const { session } = require('passport');
+
 const User = require('../model/userSchema');
 
 module.exports.user_signup= (req,res)=>{
@@ -15,23 +15,23 @@ module.exports.profile =(req,res)=>{
 }
 
 module.exports.create= async (req,res)=>{
-   let {username,email,password,comfirm_password} = req.body;
-   if (password != confirm_password){
-    req.flash('error', 'password do not match');
-    return res.redirect('back');
+    try {
+        if (req.body.password != req.body.confirm_password){
+            req.flash('error', 'Passwords do not match');
+            return res.redirect('back');
+        }
+    
+        let user = await User.findOne({email: req.body.email})
+    
+            if(!user){
+                let user = await User.create(req.body)
+                    return res.redirect('/users/sign-in');
+                }
+    
+        } 
+    catch (error) { console.log(error);}
 }
-   let user = await User.findOne({email});
-   if (user){
-    req.flash('error', 'username already exist');
-    return res.redirect('/signin');
-   }else{
-    let user= await User.create(req.body);
-    if (user){
-        req.flash('success', 'You have signed up, login to continue!');
-        res.redirect('/signin');
-   }
-}
-}
+   
 
 module.exports.createSession = function(req, res){
     req.flash('success', 'Logged in Successfully');

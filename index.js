@@ -14,7 +14,7 @@ const expressEjsLayouts = require('express-ejs-layouts');
 const app = express();
 
 
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended : true}));
 app.use(express.json());
 app.use(cookieParser());
 
