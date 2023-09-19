@@ -17,7 +17,6 @@ module.exports.profile =(req,res)=>{
 module.exports.create= async (req,res)=>{
     try {
         if (req.body.password != req.body.confirm_password){
-            req.flash('error', 'Passwords do not match');
             return res.redirect('back');
         }
     
@@ -25,7 +24,7 @@ module.exports.create= async (req,res)=>{
     
             if(!user){
                 let user = await User.create(req.body)
-                    return res.redirect('/users/sign-in');
+                    if(user){return res.redirect('/user/signin')};
                 }
     
         } 
@@ -34,20 +33,23 @@ module.exports.create= async (req,res)=>{
    
 
 module.exports.createSession = function(req, res){
-    req.flash('success', 'Logged in Successfully');
     return res.redirect('/');
 }
 
 module.exports.destroySession = (req,res)=>{
-    req.logout();
-    req.flash('success', 'You have logged out!');
-    return res.redirect('/')
+    req.logout(function(err){
+        if(err){
+            console.log(err);
+            return;
+        }
+        return res.redirect('/');
+    });
 
 }
 
 module.exports.signIn= (req , res)=>{
-    if (!req.isAuthenticated()){
-        return res.redirect('/user/signup')
+    if (req.isAuthenticated()){
+        return res.redirect('/');
     }
  
     return res.render('user_signin',{

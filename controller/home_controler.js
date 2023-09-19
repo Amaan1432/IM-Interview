@@ -12,8 +12,7 @@ module.exports.home = async (req,res)=>{
        .sort('createdAt')
        .select('-password')
    
-       let students = await Students.find({})
-       .populate('Scores')
+       let students = await Student.find({})
 
        return res.render('home', {
            title: "IM-Interview",
