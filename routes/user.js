@@ -3,6 +3,7 @@ const router = express.Router();
 const usersController = require('../controller/users_controller');
 const passport = require('passport');
 
+// user related api
 router.post('/create-session', passport.authenticate(
     'local',
     {failureRedirect: '/user/signin'},
@@ -13,5 +14,8 @@ router.post('/create', usersController.create);
 router.get('/sign-out', usersController.destroySession);
 router.get('/signin',usersController.signIn);
 router.get('/signup',usersController.user_signup);
+
+
+
 
 module.exports = router;

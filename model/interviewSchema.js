@@ -6,14 +6,28 @@ const companySchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    date: {
-        type: String,
-        required: true,
-    },
-    students: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'Students'
-    }]
+    students: [
+        {
+          student: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Student',
+          },
+          date: {
+            type: Date,
+            required: true,
+          },
+          result: {
+            type: String,
+            enum: [
+              'On Hold',
+              'Selected',
+              'Pending',
+              'Not Selected',
+              'Did not Attempt',
+            ],
+          },
+        },
+      ],
 
 }, {
     timestamps: true

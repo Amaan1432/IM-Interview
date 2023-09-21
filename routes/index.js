@@ -7,4 +7,6 @@ router.get('/',passport.checkAuthentication, homeController.home);
 
 router.use('/user', require('./user'));
 
+router.use('/student', require('./student'));
+
 module.exports = router;

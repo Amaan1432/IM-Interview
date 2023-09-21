@@ -1,0 +1,55 @@
+
+    <form class="Form" action="/student/createStudent" method="post">
+    <h3>Student Form</h3>
+    <fieldset>
+      <label for="batch">Batch</label>
+      <div class="studentform student btach">
+        <input type="text" class="form-control" id="batch" name="batch" />
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="studentform student">
+        <label for="name" class="studentform">Name</label>
+        <input type="text" class="form-control" id="name" name="name" />
+      </div>
+      <div class="studentform student">
+        <label for="email" class="studentform">Email address</label>
+        <input type="email" class="form-control" id="email" placeholder="abc@gmail.com" name="email" />
+      </div>
+      <div class="studentform student">
+        <label for="contactNumber" class="studentform">Mobile Number</label>
+        <input type="text" class="form-control" id="contactNumber" name="contactNumber" />
+      </div>
+      <div class="studentform student">
+        <label for="college" class="studentform">College Name</label>
+        <input type="text" class="form-control" id="college" name="college" />
+      </div>
+      <div class="studentform student">
+        <label for="placement" class="studentform">Placement Status</label>
+        <select class="form-select" aria-label="Default select example" name="placement" id="placement">
+          <option value="Placed">Placed</option>
+          <option value="Not Placed">Not Placed</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="Scores" style="display: flex; justify-content: space-between">
+        <div class="Scores score">
+          <label for="dsa" class="form-label">DSA</label>
+          <input type="text" class="form-control" id="dsa" name="dsa" />
+        </div>
+        <div class="Scores score">
+          <label for="webD" class="form-label">Web Development</label>
+          <input type="text" class="form-control" id="webD" name="webD" />
+        </div>
+        <div class="Scores score">
+          <label for="react" class="form-label">React</label>
+          <input type="text" class="form-control" id="react" name="react" />
+        </div>
+      </div>
+    </fieldset>
+    <button type="submit" class="btn">
+      Add Student
+    </button>

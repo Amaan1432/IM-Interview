@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-const Company = require ('./interviewSchema');
-const Scores = require('./finalScoresSchema');
+
 const studentSchema = new mongoose.Schema({
     batch: {
         type: String,
@@ -15,17 +14,34 @@ const studentSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    collageName: {
+    contactNumber: {
+        type: Number,
+        required: true,
+      },
+    college: {
         type: String,
         required: true
     },
-    status: {
-        type: String,
-        required: true
+    placement: {
+      type: String,
+      required: true,
+      enum: ['Placed', 'Not Placed'],
     },
-    scores:{
-        type: mongoose.Types.ObjectId,
-        ref: 'Scores'
+    batch: {
+      type: String,
+      required: true,
+    },
+    dsa: {
+      type: Number,
+      required: true,
+    },
+    webD: {
+      type: Number,
+      required: true,
+    },
+    react: {
+      type: Number,
+      required: true,
     },
     companies: [{
         type: mongoose.Types.ObjectId,
