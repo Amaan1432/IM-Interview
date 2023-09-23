@@ -11,8 +11,12 @@
         <div class="auth-links">
             <ul>
                 <% if (locals.user){ %>
+                <li><%= user.name %></li>
                 <li>
-                    <a href="/users/profile"><%= user.name %></a>
+                    <a href="/student/download">Report Download</a>
+                </li>
+                <li>
+                    <a href="/student/home" >Interview</a>
                 </li>
                 <li>
                     <a href="/student/allocateInterview">Allocate Interview</a>

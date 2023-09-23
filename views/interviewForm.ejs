@@ -1,7 +1,7 @@
 
 
 
-<form class="form" action="/company/schedule-interview" method="post">
+<form class="form" action="/student/scheduleInterview" method="post">
 
     <h3 style="margin: 10px;">Schedule Interview</h3>
 
@@ -11,7 +11,7 @@
         <option selected disabled>Select Student</option>
 
         <%for(let student of students){%>
-        <option value="<%=student.id%>"><%= student.name %></option>
+        <option value="<%=student.id%>" name="student"><%= student.name %></option>
         <%}%>
       </select></select>
       </div>
