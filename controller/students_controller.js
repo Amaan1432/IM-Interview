@@ -162,3 +162,33 @@ module.exports.download= async (req,res)=>{
         res.status(500).json({ error: 'Internal Server Error' });
       }
 }
+
+module.exports.delete = async (req,res)=>{
+  const { id } = req.params;
+  try {
+    // find the student using id in params
+    const student = await Student.findById(id);
+
+    // find the companies for which interview is scheduled
+    // and delete student from company interviews list
+    if (student && student.interviews.length > 0) {
+      for (let item of student.interviews) {
+        const company = await Interview.findOne({ name: item.company });
+        if (company) {
+          for (let i = 0; i < company.students.length; i++) {
+            if (company.students[i].student.toString() === id) {
+              company.students.splice(i, 1);
+              company.save();
+              break;
+            }
+          }
+        }
+      }
+    }
+    await Student.findByIdAndDelete(id);
+    res.redirect('back');
+  } catch (error) {
+    console.log('Error in deleting student');
+    return res.redirect('back');
+  }
+}

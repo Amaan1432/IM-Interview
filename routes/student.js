@@ -22,4 +22,6 @@ router.post('/updateStatus/:id',passport.checkAuthentication ,studentController.
 
 router.get('/download',passport.checkAuthentication ,studentController.download);
 
+router.get('/delete/:id', passport.checkAuthentication,studentController.delete);
+
 module.exports = router;
