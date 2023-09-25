@@ -173,7 +173,7 @@ module.exports.delete = async (req,res)=>{
     // and delete student from company interviews list
     if (student && student.interviews.length > 0) {
       for (let item of student.interviews) {
-        const company = await Interview.findOne({ name: item.company });
+        const company = await Interview.findOne({ company: item.company });
         if (company) {
           for (let i = 0; i < company.students.length; i++) {
             if (company.students[i].student.toString() === id) {
